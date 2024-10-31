@@ -27,24 +27,30 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'jogatea.urls'
+ROOT_URLCONF = 'jogos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
-        'OPTIONS': {'context_processors': ['django.template.context_processors.debug',]},
+        'OPTIONS': {'context_processors':[
+                        'django.template.context_processors.debug',
+                        'django.template.context_processors.request',
+                        'django.contrib.auth.context_processors.auth',
+                        'django.contrib.messages.context_processors.messages',
+            ],
+        },
     },
 ]
 
-WSGI_APPLICATION = 'jogatea.wsgi.application'
+WSGI_APPLICATION = 'novojogotea.wsgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jogatea_db',
-        'USER': 'seu_usuario',
-        'PASSWORD': 'sua_senha',
+        'USER': 'postgres',
+        'PASSWORD': 'teste50',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -61,4 +67,9 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
